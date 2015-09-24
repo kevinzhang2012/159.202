@@ -4,7 +4,7 @@
 -- Exercise 1
 --(a)
 time :: Int -> (Int, Int, Int)
-time x = (div x 3600, div (mod x 3600) 60, mod (mod x 3600) 60)
+time x = (div x 3600, div (mod x 3600) 60, mod x 60)
 
 --(b)
 
