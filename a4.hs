@@ -1,3 +1,4 @@
+-- 159.202 Assignment 4
 -- Yuxiang Zhang 13158665
 -- Gary Zhang 12228309
 --------------------------------------------------------------------
@@ -11,6 +12,7 @@ type Point = (Int, Int)
 type Line  = (Int, Int, Int)
 onLine :: Point -> Line -> Bool
 onLine (x,y) (a,b,c) = a*x + b*y + c == 0
+
 --------------------------------------------------------------------
 -- Exercise 2
 -- (a)
@@ -40,7 +42,7 @@ magic nList = (m, rest)
        rest = take ((fst smallNum)-1) nList ++ drop (fst smallNum) nList
        smallNum = smallest nList
 
-smallest :: [Int] -> (Int, Int)
+smallest :: [Int] -> (Int, Int) -- a function to find smallest number in list
 smallest []     = error"ERROR! List is empty."
 smallest [x]    = (1, x)
 smallest (x:xs) 
@@ -59,12 +61,16 @@ total (x:xs) = sum x + total xs
 sOdd1 :: [Int] -> [Int]
 sOdd1 []      = []
 sOdd1 [_]     = []
-sOdd1 (x:xs)  = num ++ sOdd1 xs
-  where num = if odd x then [head xs] else []   -- Return the digit followed by odd number
+sOdd1 (h:t)  = num ++ sOdd1 t
+  where num = if odd h then [head t] else []   -- Return the digit followed by odd number
 
 -- (b)
 sOdd2 :: [Int] -> [Int]
-sOdd2 xs
- | length xs < 2 = []
- | otherwise      =  num ++ sOdd2 (tail xs)
-  where num = if odd (head xs) then [xs !! 1] else []
+sOdd2 x
+ | length x < 2 = []
+ | otherwise    =  num ++ sOdd2 (tail x)
+  where num = if odd (head x) then [x !! 1] else []
+ 
+-- (c) 
+sOdd3 :: [Int] -> [Int]
+sOdd3 x = [x !! (i + 1) | i <- [0..((length x) - 2)], odd (x !! i)]
