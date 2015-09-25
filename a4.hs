@@ -7,7 +7,10 @@ time :: Int -> (Int, Int, Int)
 time x = (div x 3600, div (mod x 3600) 60, mod x 60)
 
 --(b)
-
+type Point = (Int, Int)
+type Line  = (Int, Int, Int)
+onLine :: Point -> Line -> Bool
+onLine (x,y) (a,b,c) = a*x + b*y + c == 0
 --------------------------------------------------------------------
 -- Exercise 2
 -- (a)
